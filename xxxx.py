@@ -75,15 +75,11 @@ def i_tester(question, answers):
                 fin_lis.extend(aft_lis[:2])
             print(fin_lis)
             for answer in answers:
-                flag = False
                 ans_lis = parse_search(answer)
                 for keyword in fin_lis:
                     if keyword in ans_lis:
                         f2_set.append(answer)
-                        flag = True
                         break
-                if flag:
-                    break
             print(f2_set)
 
 
