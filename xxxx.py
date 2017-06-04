@@ -4,6 +4,7 @@
 # @File  : xxxx.py
 import jieba
 import jieba.analyse
+import json
 
 prebuilt_q = {
     '询问定义': ['有什么', '是什么', '有哪些', '指什么'],
@@ -43,19 +44,46 @@ def parse_TextRank(str):
 
 
 def luis_part(str):
-    pass
+    with open("que.txt", 'r') as f:
+        x = f.read()
+    js = json.loads(x)
+    return js['topScoringIntent'], js['entities']
 
 # ------
 
 
 def i_tester(question, answers):
-    intent, keyword = luis_part(question)
+    intent, entities = luis_part(question)
     f1_set = []
     for answer in answers:
         if intent_test(intent, answer) == 1:
             f1_set.append(answer)
     print(f1_set)
-    F2_set = []
+    for entity in entities:
+        if "信号词" in entity['type']:
+            f2_set = []
+            fro_lis = parse_search(question[:entity['startIndex']])
+            aft_lis = parse_search(question[entity['endIndex']+1:])
+            fin_lis = []
+            if len(fro_lis) < 2:
+                fin_lis.extend(fro_lis)
+            else:
+                fin_lis.extend(fro_lis[-2:])
+            if len(aft_lis) < 2:
+                fin_lis.extend(aft_lis)
+            else:
+                fin_lis.extend(aft_lis[:2])
+            for answer in answers:
+                flag = False
+                ans_lis = parse_search(answer)
+                for keyword in fin_lis:
+                    if keyword in ans_lis:
+                        f2_set.append(answer)
+                        flag = True
+                        break
+                if flag:
+                    break
+            print(f2_set)
 
 
 
