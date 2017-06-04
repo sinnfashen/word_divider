@@ -1,0 +1,77 @@
+{
+  "query": "担保债权凭证在2004年发行量是多少？",
+  "topScoringIntent": {
+    "intent": "询问数量",
+    "score": 0.435399264
+  },
+  "intents": [
+    {
+      "intent": "询问数量",
+      "score": 0.435399264
+    },
+    {
+      "intent": "询问时间",
+      "score": 0.08908405
+    },
+    {
+      "intent": "询问定义(or名称)",
+      "score": 0.0208027232
+    },
+    {
+      "intent": "询问原因",
+      "score": 0.01429467
+    },
+    {
+      "intent": "询问真假/存在",
+      "score": 0.0112501606
+    },
+    {
+      "intent": "询问方法(怎样)",
+      "score": 0.008463708
+    },
+    {
+      "intent": "None",
+      "score": 0.003449197
+    },
+    {
+      "intent": "询问地点",
+      "score": 0.0025222546
+    },
+    {
+      "intent": "询问人物",
+      "score": 0.0006588378
+    }
+  ],
+  "entities": [
+    {
+      "entity": "2004年",
+      "type": "builtin.datetimeV2.daterange",
+      "startIndex": 7,
+      "endIndex": 11,
+      "resolution": {
+        "values": [
+          {
+            "timex": "2004",
+            "type": "daterange",
+            "start": "2004-01-01",
+            "end": "2005-01-01"
+          }
+        ]
+      }
+    },
+    {
+      "entity": "是多少",
+      "type": "信号词::询问数量",
+      "startIndex": 15,
+      "endIndex": 17,
+      "score": 0.9336847
+    },
+    {
+      "entity": "2004 年",
+      "type": "限定修饰词(原先/第一)",
+      "startIndex": 7,
+      "endIndex": 11,
+      "score": 0.804994166
+    }
+  ]
+}
