@@ -56,7 +56,7 @@ def i_tester(question, answers):
     intent, entities = luis_part(question)
     f1_set = []
     for answer in answers:
-        if intent_test(intent, answer) == 1:
+        if intent_test(intent['intent'], answer) == 1:
             f1_set.append(answer)
     print(f1_set)
     for entity in entities:
@@ -73,6 +73,7 @@ def i_tester(question, answers):
                 fin_lis.extend(aft_lis)
             else:
                 fin_lis.extend(aft_lis[:2])
+            print(fin_lis)
             for answer in answers:
                 flag = False
                 ans_lis = parse_search(answer)
